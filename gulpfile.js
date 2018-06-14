@@ -19,9 +19,15 @@ gulp.task('server', function() {
     });
 });
 
+//удаление скомпилированых css файлов перед новой компиляцией 
+gulp.task('cleanCssAll', function(){
+    return gulp.src('app/css/**/*.css')
+        .pipe(clean());
+});
+
 //less  (less в css)
-gulp.task('less', function(){
-	return gulp.src('app/less/*.less')
+gulp.task('less', ['cleanCssAll'], function(){
+	return gulp.src('app/less/**/*.less')
 		.pipe(plumber())
 		.pipe(less({
       	paths: [path.join(__dirname, 'less', 'includes')]
@@ -38,7 +44,7 @@ gulp.task('cleanCssMin', function(){
 
 //css (минификация файлов css)
 gulp.task('css', ['cleanCssMin', 'less'], function(){
-    return gulp.src('app/css/*.css')
+    return gulp.src('app/css/**/*.css')
 	    .pipe(plumber())
 	    .pipe(autoprefixer({
 	        browsers: ['last 2 versions']
