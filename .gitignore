@@ -1,5 +1,4 @@
 # подключаемые плагины:
 node_modules
 # исходные файлы проэкта (PSD...):
-sources  
-package-lock.json
+source 

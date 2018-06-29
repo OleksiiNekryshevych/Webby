@@ -8,7 +8,8 @@ var gulp        = require('gulp'),
     notify      = require('gulp-notify'),
     plumber     = require('gulp-plumber'),
     rename      = require('gulp-rename'), //не использовал
-	path		= require('path'); //for less
+	path		= require('path'), //for less
+    cssunit   = require('gulp-css-unit');  // конвертация РХ в РЕМ;
 
 // local server 
 gulp.task('server', function() {
@@ -21,13 +22,13 @@ gulp.task('server', function() {
 
 //удаление скомпилированых css файлов перед новой компиляцией 
 gulp.task('cleanCssAll', function(){
-    return gulp.src('app/css/**/*.css')
+    return gulp.src('app/css/main.css')
         .pipe(clean());
 });
 
 //less  (less в css)
 gulp.task('less', ['cleanCssAll'], function(){
-	return gulp.src('app/less/**/*.less')
+	return gulp.src('app/less/main.less')
 		.pipe(plumber())
 		.pipe(less({
       	paths: [path.join(__dirname, 'less', 'includes')]
@@ -44,12 +45,16 @@ gulp.task('cleanCssMin', function(){
 
 //css (минификация файлов css)
 gulp.task('css', ['cleanCssMin', 'less'], function(){
-    return gulp.src('app/css/**/*.css')
+    return gulp.src('app/css/main.css')
 	    .pipe(plumber())
 	    .pipe(autoprefixer({
 	        browsers: ['last 2 versions']
 	    })) 
-	    .pipe(concatCSS('style.min.css')) 
+	    .pipe(concatCSS('style.min.css'))
+        .pipe(cssunit({
+            type     :    'px-to-rem',
+            rootSize :    16
+        }))
 	    .pipe(cleanCSS())
 	    .pipe(gulp.dest('app/css'))
 	    .pipe(browserSync.stream())
@@ -58,8 +63,7 @@ gulp.task('css', ['cleanCssMin', 'less'], function(){
 
 // watch (отслеживаем изменения файлов)  
 gulp.task('watch', ['css', 'server'], function() {
-    gulp.watch('app/less/**/*.less', ['less'])
-    gulp.watch('app/css/**/*.css', ['css']) 
+    gulp.watch('app/less/**/*.less', ['css'])
     gulp.watch('app/js/**/*.js', browserSync.reload)
     gulp.watch('app/**/*.html', browserSync.reload);
 });
@@ -87,7 +91,7 @@ gulp.task('build', ['cleanDist', 'less', 'css'], function(){
     var buildHtnl = gulp.src('app/*.html')
     .pipe(gulp.dest('dist'))
 
-    var buildImg = gulp.src('app/img/*.*')
+    var buildImg = gulp.src('app/img/**/*.*')
     .pipe(gulp.dest('dist/img'))
 
     .pipe(notify('Builded'));
