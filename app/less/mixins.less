@@ -1,0 +1,17 @@
+.clearfix() {
+	&::after,
+	&::before {
+		content: '';
+		display: block;
+	}
+	&::after {
+		clear: both;
+	}
+}
+
+.centered(@position) {
+	position: absolute;
+	& when (@position='both'){left: 50%;top: 50%;transform: translate(-50%, -50%);}
+	& when (@position='x'){left: 50%;transform: translateX(-50%);}
+	& when (@position='y'){top: 50%;	transform: translateY(-50%);}
+}

@@ -2,3 +2,4 @@
 node_modules
 # исходные файлы проэкта (PSD...):
 source 
+package-lock.json

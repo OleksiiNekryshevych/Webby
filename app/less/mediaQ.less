@@ -1,0 +1,46 @@
+// Медиа-запросы для разных разрешений устройств
+
+// для ширины от 1400 до 1200 // ширина контейнера 1200
+.dlg() {
+	@media (max-width: 1400px) {
+		.content;
+	}
+}
+
+// для ширины от 1200 до 768
+.dm() {
+	@media (max-width: 1200px) {
+		.content;
+	}
+}
+
+// для ширины от 768 до 480
+.ds() {
+	@media (max-width: 768px) {
+		.content;
+	}
+}
+
+// для ширины от 480 до 0
+.dxs() {
+	@media (max-width: 480px) {
+		.content;
+	}
+}
+
+/*
+	Использование:
+
+	.class {
+		property1: x1[500px];
+		property2: y1[100px];
+
+		& {
+			.ds;
+			.content() {
+				property1: x2[200px];
+				property2: y2[50px];
+			}
+		}
+	}
+*/
