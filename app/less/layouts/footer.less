@@ -1,0 +1,69 @@
+.footer {
+	padding: 125px 0 240px;
+	text-align: center;
+	background: url('/../../img/layer-32-footer-bg.png') center no-repeat;
+	background-size: cover;
+	
+	& {
+		.dlg;
+		.content() {
+			padding: 50px 0 120px;
+		}
+	}
+
+	&__btn {
+		margin-bottom: 27px;
+	}
+
+	&__description{
+		.text('white', 13);
+		width: 44%;	//при расширяемом до 1024 фиксированая ширина контейнера
+		text-align: center;			
+		margin: 0 auto 85px;
+		margin-left: auto;
+
+		& {
+			.dlg;
+			.content() {
+				margin-bottom: 50px;
+			}
+		}
+
+		& {
+			.dm;
+			.content() {
+				width: 60%;
+			}
+		}
+
+		& {
+			.ds;
+			.content() {
+				width: 80%;
+			}
+		}
+
+		& {
+			.dxs;
+			.content() {
+				text-align: justify;
+			}
+		}
+	}
+
+	&__video {
+		margin: 0 auto;
+	}
+
+	&__subtitle {
+		.centered('x');
+		bottom: 105px;
+
+		& {
+			.dlg;
+			.content() {
+				bottom: 50px;
+			}
+		}
+	}
+}

@@ -15,3 +15,53 @@
 	& when (@position='x'){left: 50%;transform: translateX(-50%);}
 	& when (@position='y'){top: 50%;	transform: translateY(-50%);}
 }
+
+// основные блоки текста
+.text(@color, @size) {
+	& when (@size=13) {
+		font-family: 'Roboto-light';
+		font-size: 13px;
+		line-height: 20px;
+		font-weight: 300;	
+		letter-spacing: 0.52px;
+	}
+	& when (@size=14) {
+		font-family: 'Roboto-Regular';
+		font-size: 14px;
+		line-height: 21px;
+		font-weight: 400;
+		letter-spacing: 0.84px;
+	}
+	& when (@color='black'){
+		color: #000;
+	}
+	& when (@color='white'){
+		color: #fff;
+	}
+}
+
+.filter() {
+	filter: brightness(1.05) contrast(.8);
+}
+
+.contentSpace() {
+	padding-left: 15.7%;
+	padding-right: 15.7%;
+
+	& {		
+		.dlg;
+		.content() {
+			padding-left: 10%;
+			padding-right: 10%;
+		}
+	}
+		
+	& {		
+		.dm;
+		.content() {
+			padding-left: 5%;
+			padding-right: 5%;
+		}
+	}
+	
+}

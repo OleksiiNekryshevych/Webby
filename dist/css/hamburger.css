@@ -1,0 +1,155 @@
+.menu {
+	position: absolute;
+	top: 45px;
+	right: 45px;
+}
+
+.menu__wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	border-radius: 25px;
+	overflow: hidden;
+}
+
+.menu__nav {
+	opacity: 0;
+	padding-left: 20px;
+	padding-right: 50px;	
+	background-color: #fff;
+	height: 50px;	
+	margin-right: -50px;
+	border-radius: 25px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	justify-content: space-around;		
+}
+
+.menu__nav--active {	
+	animation-name: slideLeft;
+	animation-duration: 0.5s;
+	animation-delay: 0s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.menu__nav--unactive{	
+	animation-name: slideRight;
+	animation-duration: 0.5s;
+	animation-delay:0s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.menu__nav-link{
+	text-decoration: none;
+	color: #555;
+	margin-right: 20px;
+}
+
+.menu__btn {
+	position: relative;
+	display: block;
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+	border-radius: 50%;	
+}
+
+.menu__line,
+.menu__btn::before,
+.menu__btn::after {
+	display: block;
+	position: absolute;
+	top: 50%; margin-top: -1px;
+	left: 50%; margin-left: -10px;	
+	width: 20px;
+	height: 2px;
+	background-color: #555;
+	transition: 0.5s;
+}
+
+.menu__btn::before,
+.menu__btn::after {	
+	content: '';
+		
+}
+
+.menu__btn::before {
+	transform: translateY(-5px);
+}
+
+.menu__btn::after {
+	transform: translateY(5px);	
+}
+
+.menu__btn--active .menu__line {
+	opacity: 0;
+	transition: 0.1s;
+}
+
+.menu__btn--active::before {
+	transform: rotate(45deg);
+}
+
+.menu__btn--active::after {
+	transform: rotate(-45deg);
+}
+
+
+
+@media (max-width: 480px) {
+	.menu__nav{
+		flex-direction: column;
+		justify-content: flex-end;		
+	}
+
+	.menu__nav-link {
+		margin-bottom: 13px;
+		font-size: 20px;
+	}
+
+	.menu__btn{
+		align-self: flex-start;
+	}
+
+	.menu__nav--active{
+		animation-name: slideLeft,slideUp;
+		animation-duration: 0.5, 0.2s;
+		animation-delay: 0s, 0.5s;
+		animation-timing-function: ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+	.menu__nav--unactive{
+		animation-name: slideDown, slideRight;
+		animation-duration: 0.5, 0.2s;
+		animation-delay: 0s, 0.5s;
+		animation-timing-function: ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+}
+
+
+/*-------animation-------*/
+@keyframes slideUp {
+	from {height: 50px;}
+	to {height: 180px;}
+}
+@keyframes slideDown {
+	from {height: 180px;}
+	to {height: 50px;}
+}
+@keyframes slideLeft {	
+	from {transform: translateX(90%)}
+	to {transform: translateX(0%);}
+}
+@keyframes slideRight {
+	from {transform: translateX(0%);}
+	to {transform: translateX(90%);}
+}
+.visib{
+	opacity: 1;
+}

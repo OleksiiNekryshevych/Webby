@@ -1,0 +1,49 @@
+.deal {	
+	padding: 100px 0;
+	text-align: center;
+	background: 
+		url('/../../img/layer-31-baner.png') center no-repeat,
+		url('/../../img/filter1.png');	
+	background-size: cover;
+
+	& {
+		.dm;
+		.content() {
+			padding: 50px 0;
+		}
+	}	
+
+	&__btn {
+		margin-bottom: 28px;		
+	}
+
+	&__description {		
+		.text('white', 13);	
+		text-align: center;
+		width: 44%;	//при расширяемом до 1024 фиксированая ширина контейнера
+		margin-right: auto;
+		margin-left: auto;	
+
+		& {
+			.dm;
+			.content() {
+				width: 60%;
+			}
+		}
+
+		& {
+			.ds;
+			.content() {
+				width: 80%;
+			}
+		}
+
+		& {
+			.dxs;
+			.content() {
+				text-align: justify;
+			}
+		}
+
+	}
+}

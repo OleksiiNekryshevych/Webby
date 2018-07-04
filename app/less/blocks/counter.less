@@ -1,0 +1,64 @@
+.counter {
+	width: 100%;
+	min-height: 75px;
+	background-color: #f5f5f5;
+	display: flex;
+	justify-content: space-around;
+	
+	&__item {
+		width: 150px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+
+		&::before {
+			font-family: 'Roboto-Bold';
+			font-weight: 500;
+			font-size: 28px;
+			line-height: 28px;
+			margin-top: 15px;
+			margin-bottom: 10px;
+			content: attr(data-number);	
+		}
+
+		&::after {			
+			content: attr(data-desc);
+			font-size: 17px;
+			line-height: 22px;
+			margin-bottom: 10px;			
+			text-align: center;
+			vertical-align: middle;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		& {
+			.ds;
+			.content() {
+				&::before {
+					font-size: 22px;
+				}
+				&::after {
+					font-size: 3vw;
+				}				
+			}
+		}
+
+		& {
+			.dxs;
+			.content() {
+				border: 2px solid white;
+				&::before {
+					margin-bottom: 5px;
+				}
+				&::after {
+					font-size: 4vw;
+					line-height: 4.5vw;
+				}
+			}
+		}
+	}
+}

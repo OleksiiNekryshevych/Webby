@@ -52,8 +52,8 @@ gulp.task('css', ['cleanCssMin', 'less'], function(){
 	    })) 
 	    .pipe(concatCSS('style.min.css'))
         .pipe(cssunit({
-            type     :    'px-to-rem',
-            rootSize :    16
+            type     : 'px-to-rem',
+            rootSize : 16
         }))
 	    .pipe(cleanCSS())
 	    .pipe(gulp.dest('app/css'))
